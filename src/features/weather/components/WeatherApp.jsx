@@ -212,6 +212,25 @@ export default function WeatherApp() {
             <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by{' '}
             <a href="#">Codex</a>.
           </footer>
+          <CurrentWeather
+            forecast={forecast}
+            selectedLocation={selectedLocation}
+            getLocationLabel={getLocationLabel}
+            unitSystem={unitSystem}
+          />
+          <DailyForecast
+            days={dailyForecast}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            unitSystem={unitSystem}
+          />
+          <HourlyForecast hours={hourlyForecast} unitSystem={unitSystem} />
+
+      <footer className="attribution">
+        Challenge by{' '}
+        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by{' '}
+        <a href="#">Codex</a>.
+      </footer>
         </>
       )}
     </main>

@@ -11,13 +11,6 @@
   --orange-500: hsl(28, 100%, 52%);
   --blue-500: hsl(233, 67%, 56%);
   --blue-700: hsl(248, 70%, 36%);
-
-  --space-1: clamp(0.5rem, 1vw, 0.75rem);
-  --space-2: clamp(0.75rem, 1.4vw, 1rem);
-  --space-3: clamp(1rem, 2vw, 1.25rem);
-  --space-4: clamp(1.25rem, 2.8vw, 1.75rem);
-  --radius-m: 14px;
-  --radius-l: 18px;
 }
 
 * {
@@ -250,25 +243,23 @@ h2 {
 .day-card p {
   margin: 0;
   font-size: 0.9rem;
-  text-align: center;
 }
 
 .hour-row {
   margin-top: 0.75rem;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(86px, 1fr);
+  grid-auto-columns: minmax(78px, 1fr);
   overflow-x: auto;
-  overscroll-behavior-x: contain;
-  gap: var(--space-1);
-  padding-bottom: 0.35rem;
+  gap: 0.6rem;
+  padding-bottom: 0.3rem;
 }
 
 .hour-card {
   background: var(--neutral-700);
   border-radius: 10px;
   text-align: center;
-  padding: 0.55rem;
+  padding: 0.5rem;
 }
 
 .hour-card p {
@@ -277,7 +268,7 @@ h2 {
 }
 
 .attribution {
-  margin: 0.25rem 0 0;
+  margin-top: 1rem;
   text-align: center;
   font-size: 0.8rem;
   color: var(--neutral-300);
@@ -287,66 +278,13 @@ h2 {
   color: var(--neutral-0);
 }
 
-@media (min-width: 480px) {
-  .search-row {
-    grid-template-columns: 1fr auto;
-  }
-
-  .btn-primary {
-    min-width: 140px;
-  }
-
-  .day-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 700px) {
-  .metrics-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .day-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .hour-row {
-    grid-auto-columns: minmax(102px, 1fr);
-  }
-}
-
-@media (min-width: 960px) {
+@media (min-width: 900px) {
   .top-bar {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr auto;
     align-items: end;
   }
 
-  .summary-grid {
-    grid-template-columns: minmax(320px, 1fr) minmax(0, 1.2fr);
-    align-items: stretch;
-  }
-
-  .day-grid {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1280px) {
   .weather-layout {
-    width: min(1500px, 100% - 6rem);
-  }
-
-  .panel {
-    padding: var(--space-4);
-  }
-
-  .hour-row {
-    grid-auto-columns: minmax(110px, 1fr);
-  }
-}
-
-@media (min-width: 1800px) {
-  .weather-layout {
-    width: min(1700px, 100% - 8rem);
+    margin-block: 2rem;
   }
 }
