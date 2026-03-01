@@ -1,13 +1,5 @@
-import { _useState } from 'react'
-
-
+import WeatherApp from './features/weather/components/WeatherApp'
 
 export default function App() {
-
-  return (
-    <>
-      
-    </>
-  )
+  return <WeatherApp />
 }
-

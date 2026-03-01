@@ -1,49 +1,263 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=DM+Sans:wght@300;500;600;700&display=swap');
 
-.bricolage-grotesque {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+:root {
+  --neutral-900: hsl(243, 96%, 9%);
+  --neutral-800: hsl(243, 27%, 20%);
+  --neutral-700: hsl(243, 23%, 24%);
+  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-300: hsl(240, 6%, 70%);
+  --neutral-200: hsl(250, 6%, 84%);
+  --neutral-0: hsl(0, 0%, 100%);
+  --orange-500: hsl(28, 100%, 52%);
+  --blue-500: hsl(233, 67%, 56%);
+  --blue-700: hsl(248, 70%, 36%);
 }
 
-.dm-sans {
-  font-family: "DM Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--neutral-0);
+  background: radial-gradient(circle at 20% 20%, var(--blue-500), var(--neutral-900) 60%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.weather-layout {
+  width: min(1100px, 100% - 2rem);
+  margin: 1.5rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.top-bar {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: color-mix(in srgb, var(--neutral-800) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--neutral-200) 20%, transparent);
+  border-radius: 16px;
+  padding: 1rem;
+  backdrop-filter: blur(2px);
+}
+
+.search-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.search-label,
+h1,
+h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  margin: 0;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  border: 1px solid var(--neutral-600);
+  border-radius: 12px;
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.search-input:focus-visible,
+.btn-primary:focus-visible,
+.chip:focus-visible,
+.day-card:focus-visible,
+.result-item:focus-visible {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+.btn-primary,
+.chip,
+.result-item,
+.day-card {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--orange-500), #ff8e3c);
+  color: var(--neutral-0);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.unit-toggle {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.unit-toggle p {
+  margin: 0 0.25rem 0 0;
+  font-weight: 600;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  background: var(--neutral-700);
+  color: var(--neutral-200);
+}
+
+.chip.is-active {
+  background: var(--blue-500);
+  color: var(--neutral-0);
+}
+
+.status {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--neutral-700) 70%, transparent);
+}
+
+.status.error {
+  background: color-mix(in srgb, #9e1b32 60%, transparent);
+}
+
+.search-results {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.result-item {
+  text-align: left;
+  border-radius: 10px;
+  padding: 0.65rem;
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+}
+
+.current-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.current h1 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.current p {
+  margin: 0.2rem 0;
+}
+
+.location {
+  color: var(--neutral-300);
+}
+
+.metrics-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.metrics-grid div {
+  background: var(--neutral-700);
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.metrics-grid dt {
+  color: var(--neutral-300);
+  font-size: 0.88rem;
+}
+
+.metrics-grid dd {
+  margin: 0.35rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.day-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 0.6rem;
+}
+
+.day-card {
+  border-radius: 12px;
+  padding: 0.65rem;
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+}
+
+.day-card.is-active {
+  background: linear-gradient(180deg, var(--blue-700), var(--blue-500));
+}
+
+.day-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.hour-row {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(78px, 1fr);
+  overflow-x: auto;
+  gap: 0.6rem;
+  padding-bottom: 0.3rem;
+}
+
+.hour-card {
+  background: var(--neutral-700);
+  border-radius: 10px;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.hour-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
 }
 
 .attribution {
-  font-size: 11px;
+  margin-top: 1rem;
   text-align: center;
+  font-size: 0.8rem;
+  color: var(--neutral-300);
 }
+
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: var(--neutral-0);
 }
 
+@media (min-width: 900px) {
+  .top-bar {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
 
-:root {
-  /* Neutral Colors */
-    --neutral-900: hsl(243, 96%, 9%);
-    --neutral-800: hsl(243, 27%, 20%);
-    --neutral-700: hsl(243, 23%, 24%);
-    --neutral-600: hsl(243, 23%, 30%);
-    --neutral-300: hsl(240, 6%, 70%);
-    --neutral-200: hsl(250, 6%, 84%);
-    --neutral-0: hsl(0, 0%, 100%);
-
-  /* Accent Colors */
-    --orange-500: hsl(28, 100%, 52%);
-    --blue-500: hsl(233, 67%, 56%);
-    --blue-700: hsl(248, 70%, 36%);
-}
-
-body{
-    font-size: 1.2rem;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
+  .weather-layout {
+    margin-block: 2rem;
+  }
 }
