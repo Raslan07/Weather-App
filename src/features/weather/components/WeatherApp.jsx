@@ -92,7 +92,7 @@ function DailyForecast({ days, selectedDay, setSelectedDay, unitSystem }) {
   const tempUnit = unitSystem === 'imperial' ? '°F' : '°C'
 
   return (
-    <section className="panel daily-panel">
+    <section className="panel">
       <h2>Daily forecast</h2>
       <div className="day-grid">
         {days.map((day) => {
@@ -120,7 +120,7 @@ function HourlyForecast({ hours, unitSystem }) {
   const tempUnit = unitSystem === 'imperial' ? '°F' : '°C'
 
   return (
-    <section className="panel hourly-panel">
+    <section className="panel">
       <h2>Hourly forecast</h2>
       <div className="hour-row" role="list">
         {hours.map((hour) => {
@@ -212,6 +212,25 @@ export default function WeatherApp() {
             <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by{' '}
             <a href="#">Codex</a>.
           </footer>
+          <CurrentWeather
+            forecast={forecast}
+            selectedLocation={selectedLocation}
+            getLocationLabel={getLocationLabel}
+            unitSystem={unitSystem}
+          />
+          <DailyForecast
+            days={dailyForecast}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            unitSystem={unitSystem}
+          />
+          <HourlyForecast hours={hourlyForecast} unitSystem={unitSystem} />
+
+      <footer className="attribution">
+        Challenge by{' '}
+        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by{' '}
+        <a href="#">Codex</a>.
+      </footer>
         </>
       )}
     </main>
